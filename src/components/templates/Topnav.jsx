@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import axios from "../../utils/axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import noimage from "/noimage.jpg"
 const Topnav = () => {
   const [query, setQuery] = useState("");
-  console.log(query);
+  const [searches, setsearches] = useState([]);
+  // console.log(query);
+
+  const getSearches = async () => {
+    try {
+      const { data } = await axios.get(`/search/multi?query=${query}`);
+      // console.log(data);
+      setsearches(data.results);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+
+  useEffect(() => {
+    getSearches();
+  }, [query]);
 
   return (
-    <div className="w-full h-[10vh] relative flex justify-start items-center ml-[15%]">
-      <i class="text-3xl text-zinc-400 ri-search-line"></i>
+    <div className="w-[80%] h-[10vh] relative flex items-center mx-auto">
+      <i className="text-3xl text-zinc-400 ri-search-line"></i>
       <input
         onChange={(e) => setQuery(e.target.value)}
         value={query}
@@ -18,26 +34,42 @@ const Topnav = () => {
       {query.length > 0 && (
         <i
           onClick={() => setQuery("")}
-          class="text-3xl text-zinc-400 ri-close-line"
+          className=" text-3xl text-zinc-400 ri-close-line right-0"
         ></i>
       )}
 
       <div
         className="
-       absolute  w-[50%] max-h-[50vh] bg-zinc-200  top-[90%] overflow-auto rounded "
+       absolute  w-[50%] max-h-[50vh] bg-zinc-200  top-[90%] left-[5%] top-[100%] overflow-auto rounded "
       >
-        {/* <Link
-          className="font-semibold hover:text-zinc-950 hover:bg-zinc-300 duration-300 text-zinc-600 w-[100%] p-10 flex justify-start items-center border-b-2 
+        {searches.map((s, i) => (
+          <Link
+            key={i}
+            className="font-semibold hover:text-zinc-950 hover:bg-zinc-300 duration-300 text-zinc-600 w-[100%] p-10 flex justify-start items-center border-b-2 
         border-zinc-100 
         "
-        >
-          <img src="" alt="" />
-          <span>Hello Everyone</span>
-        </Link> */}
-  
+          >
+            <img
+            className="w-[10vh] h-[10vh] object-cover rounded mr-5 shadow-lg"
+            src={
+              s.backdrop_path || s.profile_path 
+              ? `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.profile_path  }`
+            : noimage
+            }
+             alt="" />
+            <span>
+              {s.name ||
+               s.title ||
+                s.original_language ||
+                 s.original_name ||
+                  s.original_title 
+                  }
+            </span>
+          </Link>
+        ))}
       </div>
     </div>
   );
 };
 
-export default Topnav; 
+export default Topnav;
