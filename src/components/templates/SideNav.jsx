@@ -26,7 +26,7 @@ export const SideNav = () => {
         <Link to="/tv" className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
           <i className="ri-tv-2-fill mr-2"></i>Tv Shows
         </Link>
-        <Link className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
+        <Link to="/person" className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
           <i className="ri-team-fill mr-2"></i>People
         </Link>
       </nav>
