@@ -12,15 +12,15 @@ export const SideNav = () => {
         <h1 className="text-white font-semibold text-xl mt-10 mb-3">
           New Feeds
         </h1>
-        <Link className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
-          {" "}
+        <Link to="/trending" className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
+          
           <i className="ri-fire-fill "></i> Trending
         </Link>
         <Link className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
           <i className="ri-bard-fill"></i> Popular
         </Link>
         <Link className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
-          {" "}
+          
           <i className="ri-movie-fill mr-2"></i>Movies
         </Link>
         <Link className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
