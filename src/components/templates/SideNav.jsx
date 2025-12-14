@@ -16,7 +16,7 @@ export const SideNav = () => {
           
           <i className="ri-fire-fill "></i> Trending
         </Link>
-        <Link className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
+        <Link to="/popular" className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
           <i className="ri-bard-fill"></i> Popular
         </Link>
         <Link className="hover:bg-[#6556CD] p-3 hover:text-white duration-300 rounded-lg">
