@@ -1,7 +1,7 @@
 import axios from "../../utils/axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import noimage from "/noimage.jpg"
+import noimage from "/noimage.jpg";
 const Topnav = () => {
   const [query, setQuery] = useState("");
   const [searches, setsearches] = useState([]);
@@ -40,7 +40,7 @@ const Topnav = () => {
 
       <div
         className="
-       absolute  w-[50%] max-h-[50vh] bg-zinc-200  top-[90%] left-[5%] top-[100%] overflow-auto rounded "
+      z-[100] absolute  w-[50%] max-h-[50vh] bg-zinc-200  top-[90%] left-[5%] top-[100%] overflow-auto rounded "
       >
         {searches.map((s, i) => (
           <Link
@@ -50,20 +50,22 @@ const Topnav = () => {
         "
           >
             <img
-            className="w-[10vh] h-[10vh] object-cover rounded mr-5 shadow-lg"
-            src={
-              s.backdrop_path || s.profile_path 
-              ? `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.profile_path  }`
-            : noimage
-            }
-             alt="" />
+              className="w-[10vh] h-[10vh] object-cover rounded mr-5 shadow-lg"
+              src={
+                s.backdrop_path || s.profile_path
+                  ? `https://image.tmdb.org/t/p/original/${
+                      s.backdrop_path || s.profile_path
+                    }`
+                  : noimage
+              }
+              alt=""
+            />
             <span>
               {s.name ||
-               s.title ||
+                s.title ||
                 s.original_language ||
-                 s.original_name ||
-                  s.original_title 
-                  }
+                s.original_name ||
+                s.original_title}
             </span>
           </Link>
         ))}
